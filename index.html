@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pequeños comienzos</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">Tu espacio para empezar</p>
+      <h1 id="page-title">Una idea sencilla y bonita puede abrir un mundo.</h1>
+      <p class="intro">
+        Esta página es un punto de partida limpio para experimentar con HTML, CSS y JavaScript.
+      </p>
+
+      <div class="actions">
+        <button class="primary-button" id="inspire-button" type="button">
+          Dame una chispa
+          <span aria-hidden="true">&rarr;</span>
+        </button>
+        <p class="action-message" id="action-message" aria-live="polite">
+          Pulsa el botón cuando quieras comenzar.
+        </p>
+      </div>
+
+      <div class="stats" aria-label="Resumen de la página">
+        <div class="stat">
+          <strong id="click-count">0</strong>
+          <span>chispas activadas</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat">
+          <strong>3</strong>
+          <span>archivos esenciales</span>
+        </div>
+      </div>
+    </section>
+
+    <aside class="note-card" aria-label="Nota">
+      <span class="note-icon" aria-hidden="true">✦</span>
+      <div>
+        <p class="note-label">Pequeño recordatorio</p>
+        <p class="note-text">Lo importante no es hacerlo enorme. Es hacerlo tuyo.</p>
+      </div>
+    </aside>
+  </main>
+
+  <aside class="analog-clock" aria-label="Reloj analógico">
+    <span class="clock-number clock-number-12">12</span>
+    <span class="clock-number clock-number-3">3</span>
+    <span class="clock-number clock-number-6">6</span>
+    <span class="clock-number clock-number-9">9</span>
+    <span class="clock-hand hour-hand" id="hour-hand"></span>
+    <span class="clock-hand minute-hand" id="minute-hand"></span>
+    <span class="clock-hand second-hand" id="second-hand"></span>
+    <span class="clock-center" aria-hidden="true"></span>
+  </aside>
+</body>
+</html>
