@@ -37,6 +37,26 @@ También puedes utilizar la extensión **Live Server** de Visual Studio Code par
 - JavaScript vanilla
 - Google Fonts
 
+## Programa de consola de tareas
+
+El archivo `tareas.py` contiene una lista de tareas que permite anadir tareas,
+listarlas, marcarlas como completadas y salir del programa.
+
+Para ejecutarlo desde la carpeta del proyecto:
+
+```bash
+python tareas.py
+```
+
+Si en Windows tienes instalado el lanzador de Python, tambien puedes usar:
+
+```bash
+py tareas.py
+```
+
+Elige una opcion del menu y sigue las indicaciones. Las tareas se mantienen en
+memoria mientras el programa esta abierto.
+
 ## Compatibilidad
 
 Compatible con navegadores modernos que soporten CSS Grid, CSS Custom Properties y JavaScript ES6.

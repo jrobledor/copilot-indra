@@ -1,36 +1,38 @@
-const inspireButton = document.querySelector('#inspire-button');
-const actionMessage = document.querySelector('#action-message');
-const clickCount = document.querySelector('#click-count');
+const botonInspiracion = document.querySelector('#inspire-button');
+const mensajeDeAccion = document.querySelector('#action-message');
+const contadorDeClics = document.querySelector('#click-count');
 
-const messages = [
+const mensajesDeInspiracion = [
   'Empieza por una línea y deja que crezca.',
   'La curiosidad ya es un buen plan.',
   'Prueba algo pequeño. Después, vuelve a probar.',
   'Tu próxima idea puede empezar justo aquí.'
 ];
 
-let activations = 0;
+let numeroDeActivaciones = 0;
 
-inspireButton.addEventListener('click', () => {
-  activations += 1;
-  clickCount.textContent = activations;
-  actionMessage.textContent = messages[(activations - 1) % messages.length];
+botonInspiracion.addEventListener('click', () => {
+  numeroDeActivaciones += 1;
+  contadorDeClics.textContent = String(numeroDeActivaciones);
+
+  const indiceDelMensaje = (numeroDeActivaciones - 1) % mensajesDeInspiracion.length;
+  mensajeDeAccion.textContent = mensajesDeInspiracion[indiceDelMensaje];
 });
 
-const hourHand = document.querySelector('#hour-hand');
-const minuteHand = document.querySelector('#minute-hand');
-const secondHand = document.querySelector('#second-hand');
+const agujaHora = document.querySelector('#hour-hand');
+const agujaMinuto = document.querySelector('#minute-hand');
+const agujaSegundo = document.querySelector('#second-hand');
 
-function updateClock() {
-  const now = new Date();
-  const seconds = now.getSeconds();
-  const minutes = now.getMinutes() + seconds / 60;
-  const hours = (now.getHours() % 12) + minutes / 60;
+function actualizarReloj() {
+  const fechaActual = new Date();
+  const segundos = fechaActual.getSeconds();
+  const minutos = fechaActual.getMinutes() + segundos / 60;
+  const horas = (fechaActual.getHours() % 12) + minutos / 60;
 
-  hourHand.style.transform = `rotate(${hours * 30}deg)`;
-  minuteHand.style.transform = `rotate(${minutes * 6}deg)`;
-  secondHand.style.transform = `rotate(${seconds * 6}deg)`;
+  agujaHora.style.transform = `rotate(${horas * 30}deg)`;
+  agujaMinuto.style.transform = `rotate(${minutos * 6}deg)`;
+  agujaSegundo.style.transform = `rotate(${segundos * 6}deg)`;
 }
 
-updateClock();
-setInterval(updateClock, 1000);
+actualizarReloj();
+setInterval(actualizarReloj, 1000);
