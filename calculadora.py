@@ -1,19 +1,25 @@
-def calcular_media(numeros):
-    # Devuelve la media de una lista de números.
-    datos = [1, 2, 3, 4, 5]
-    return sum(datos) / len(datos)
+def calcular_media(valores):
+    """Devuelve la media de una lista de números."""
+    if not valores:
+        return 0.0
 
-print(calcular_media([]))
-
+    return sum(valores) / len(valores)
 
 
 def procesar(precios):
-    total = 0
-    for p in precios:
-        if p > 0:
-            total += p * 1.21
-    return round(total, 2)
+    """Calcula el total con IVA del 21% para los precios positivos."""
+    total = 0.0
+
+    for precio in precios:
+        if precio > 0:
+            total += precio * 1.21
+
+    return float(round(total, 2))
 
 
 def es_mayor_de_edad(edad):
+    """Devuelve True si la persona es mayor de edad."""
+    if not isinstance(edad, (int, float)):
+        raise TypeError("La edad debe ser un número.")
+
     return edad >= 18
