@@ -5,10 +5,77 @@
   --muted: #617381;
   --cream: #f7f2e9;
   --paper: #fffdf8;
-  --coral: #df7157;
-  --coral-dark: #b9503d;
-  --sage: #b7cbb6;
+  --primary: #df7157;
+  --primary-dark: #b9503d;
+  --accent: #b7cbb6;
   --line: rgba(23, 48, 66, 0.14);
+  --shadow-soft: rgba(23, 48, 66, 0.08);
+  --shadow-strong: rgba(185, 80, 61, 0.2);
+}
+
+body[data-theme="sunset"] {
+  --ink: #173042;
+  --muted: #617381;
+  --cream: #f7f2e9;
+  --paper: #fffdf8;
+  --primary: #df7157;
+  --primary-dark: #b9503d;
+  --accent: #b7cbb6;
+  --line: rgba(23, 48, 66, 0.14);
+  --shadow-soft: rgba(23, 48, 66, 0.08);
+  --shadow-strong: rgba(185, 80, 61, 0.2);
+}
+
+body[data-theme="ocean"] {
+  --ink: #123b4d;
+  --muted: #4d7185;
+  --cream: #edf8fa;
+  --paper: #f9fffe;
+  --primary: #2b8ca8;
+  --primary-dark: #186f8b;
+  --accent: #9ad7d3;
+  --line: rgba(18, 59, 77, 0.14);
+  --shadow-soft: rgba(28, 80, 100, 0.12);
+  --shadow-strong: rgba(43, 140, 168, 0.2);
+}
+
+body[data-theme="violet"] {
+  --ink: #31264d;
+  --muted: #655a82;
+  --cream: #f4efff;
+  --paper: #ffffff;
+  --primary: #8c66d3;
+  --primary-dark: #6447af;
+  --accent: #d7c5f5;
+  --line: rgba(49, 38, 77, 0.14);
+  --shadow-soft: rgba(49, 38, 77, 0.08);
+  --shadow-strong: rgba(140, 102, 211, 0.2);
+}
+
+body[data-theme="forest"] {
+  --ink: #1e3a2b;
+  --muted: #56725c;
+  --cream: #edf8ef;
+  --paper: #fbfffb;
+  --primary: #3f8f63;
+  --primary-dark: #2d6f49;
+  --accent: #bfd7ad;
+  --line: rgba(30, 58, 43, 0.14);
+  --shadow-soft: rgba(30, 58, 43, 0.08);
+  --shadow-strong: rgba(63, 143, 99, 0.18);
+}
+
+body[data-theme="midnight"] {
+  --ink: #ecf2ff;
+  --muted: #a6b7d8;
+  --cream: #121b33;
+  --paper: #1b2646;
+  --primary: #7b8cff;
+  --primary-dark: #586cf9;
+  --accent: #ff93b5;
+  --line: rgba(173, 194, 255, 0.2);
+  --shadow-soft: rgba(6, 10, 25, 0.4);
+  --shadow-strong: rgba(123, 140, 255, 0.28);
 }
 
 * {
@@ -20,10 +87,11 @@ body {
   min-height: 100vh;
   color: var(--ink);
   background:
-    radial-gradient(circle at 8% 15%, rgba(223, 113, 87, 0.2), transparent 28%),
-    radial-gradient(circle at 90% 82%, rgba(183, 203, 182, 0.42), transparent 32%),
+    radial-gradient(circle at 8% 15%, color-mix(in srgb, var(--primary) 26%, transparent), transparent 28%),
+    radial-gradient(circle at 90% 82%, color-mix(in srgb, var(--accent) 44%, transparent), transparent 32%),
     var(--cream);
   font-family: 'DM Sans', sans-serif;
+  transition: background 220ms ease, color 220ms ease;
 }
 
 body::before {
@@ -54,9 +122,10 @@ body::before {
 }
 
 .eyebrow,
-.note-label {
+.note-label,
+.theme-label {
   margin: 0;
-  color: var(--coral-dark);
+  color: var(--primary-dark);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.12em;
@@ -88,6 +157,72 @@ h1 {
   margin-top: 2.6rem;
 }
 
+.theme-picker {
+  margin-top: 2rem;
+}
+
+.theme-label {
+  margin-bottom: 0.8rem;
+}
+
+.theme-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.theme-option {
+  display: grid;
+  place-items: center;
+  width: 2.7rem;
+  height: 2.7rem;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.theme-option:hover,
+.theme-option:focus-visible {
+  transform: translateY(-2px);
+}
+
+.theme-option.is-active {
+  border-color: var(--ink);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+
+.theme-swatch {
+  display: block;
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(14, 18, 34, 0.08);
+}
+
+.theme-sunset {
+  background: linear-gradient(135deg, #df7157, #b7cbb6);
+}
+
+.theme-ocean {
+  background: linear-gradient(135deg, #2b8ca8, #9ad7d3);
+}
+
+.theme-violet {
+  background: linear-gradient(135deg, #8c66d3, #d7c5f5);
+}
+
+.theme-forest {
+  background: linear-gradient(135deg, #3f8f63, #bfd7ad);
+}
+
+.theme-midnight {
+  background: linear-gradient(135deg, #7b8cff, #ff93b5);
+}
+
 .primary-button {
   display: inline-flex;
   align-items: center;
@@ -96,8 +231,8 @@ h1 {
   border-radius: 999px;
   padding: 0.9rem 1.25rem 0.9rem 1.5rem;
   color: white;
-  background: var(--coral);
-  box-shadow: 0 10px 24px rgba(185, 80, 61, 0.2);
+  background: var(--primary);
+  box-shadow: 0 10px 24px var(--shadow-strong);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -111,7 +246,7 @@ h1 {
 
 .primary-button:hover,
 .primary-button:focus-visible {
-  background: var(--coral-dark);
+  background: var(--primary-dark);
   transform: translateY(-3px);
 }
 
@@ -163,10 +298,10 @@ h1 {
   align-items: flex-start;
   align-self: end;
   padding: 1.5rem;
-  border: 1px solid rgba(23, 48, 66, 0.12);
+  border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 253, 248, 0.72);
-  box-shadow: 0 20px 45px rgba(23, 48, 66, 0.08);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  box-shadow: 0 20px 45px var(--shadow-soft);
   animation: rise-in 700ms 180ms ease-out both;
 }
 
@@ -178,7 +313,7 @@ h1 {
   height: 2rem;
   border-radius: 50%;
   color: white;
-  background: var(--sage);
+  background: var(--accent);
   font-size: 1.1rem;
 }
 
@@ -200,10 +335,10 @@ h1 {
   bottom: clamp(1rem, 3vw, 2.5rem);
   width: 132px;
   aspect-ratio: 1;
-  border: 1px solid rgba(23, 48, 66, 0.16);
+  border: 1px solid var(--line);
   border-radius: 50%;
-  background: rgba(255, 253, 248, 0.86);
-  box-shadow: 0 14px 35px rgba(23, 48, 66, 0.12);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  box-shadow: 0 14px 35px var(--shadow-soft);
   animation: rise-in 700ms 300ms ease-out both;
 }
 
@@ -271,7 +406,7 @@ h1 {
   width: 1px;
   height: 48px;
   margin-left: -0.5px;
-  background: var(--coral);
+  background: var(--primary);
 }
 
 .clock-center {
@@ -283,7 +418,7 @@ h1 {
   height: 7px;
   border: 2px solid var(--paper);
   border-radius: 50%;
-  background: var(--coral);
+  background: var(--primary);
   transform: translate(-50%, -50%);
 }
 

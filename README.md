@@ -1,4 +1,4 @@
-# Mi Web!!!!!!
+# Mi Web
 
 Página web estática y sencilla creada con HTML, CSS y JavaScript. Incluye una interfaz minimalista, un botón interactivo de inspiración y un reloj analógico en tiempo real.
 

@@ -1,6 +1,7 @@
 const botonInspiracion = document.querySelector('#inspire-button');
 const mensajeDeAccion = document.querySelector('#action-message');
 const contadorDeClics = document.querySelector('#click-count');
+const botonesTema = document.querySelectorAll('.theme-option');
 
 const mensajesDeInspiracion = [
   'Empieza por una línea y deja que crezca.',
@@ -17,6 +18,26 @@ botonInspiracion.addEventListener('click', () => {
 
   const indiceDelMensaje = (numeroDeActivaciones - 1) % mensajesDeInspiracion.length;
   mensajeDeAccion.textContent = mensajesDeInspiracion[indiceDelMensaje];
+});
+
+function activarTema(nombreTema) {
+  document.body.dataset.theme = nombreTema;
+  localStorage.setItem('tema-seleccionado', nombreTema);
+
+  botonesTema.forEach((botonTema) => {
+    const estaActivo = botonTema.dataset.theme === nombreTema;
+    botonTema.classList.toggle('is-active', estaActivo);
+    botonTema.setAttribute('aria-pressed', String(estaActivo));
+  });
+}
+
+const temaGuardado = localStorage.getItem('tema-seleccionado') || 'sunset';
+activarTema(temaGuardado);
+
+botonesTema.forEach((botonTema) => {
+  botonTema.addEventListener('click', () => {
+    activarTema(botonTema.dataset.theme);
+  });
 });
 
 const agujaHora = document.querySelector('#hour-hand');
